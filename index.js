@@ -1,8 +1,10 @@
 let express = require('express');
 let exphbs = require('express-handlebars');
 let mongoose = require('mongoose');
+let bodyParser = require('body-parser');
 let app = express();
 
+app.use(bodyParser.urlencoded({extended: true}));
 app.engine('handlebars', exphbs());
 app.set('view engine', 'handlebars');
 
@@ -22,10 +24,15 @@ app.get('/reviews', (req, res) => {
     
 });
 app.get('/reviews/new', (req, res) => {
-    // See new review form
+    res.render('reviews-new');
 });
 app.post('/reviews', (req, res) => {
-    // Creates a new review
+    Review.create(req.body)
+    .then(review => {
+        res.redirect('/');
+    }).catch(error => {
+        console.log(error.message);
+    });
 });
 app.get('/reviews/:id', (req, res) => {
     // Shows one review
