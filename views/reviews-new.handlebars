@@ -1,30 +1,20 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Rotten Potatoes | New Review</title>
-        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
-    <body>
-        <form method="POST" action="/reviews">
-            <fieldset>
-                <legend>New Review</legend>
-                <p>
-                    <label for="review-title">Title</label><br>
-                    <input id="review-title" type="text" name="reviewTitle" />
-                </p>
-                <p>
-                    <label for="movie-title">Movie Title</label><br>
-                    <input id="movie-title" type="text" name="movieTitle" />
-                </p>
-                <p>
-                    <label for="description-text">Description</label><br>
-                    <textarea id="description-text" name="movieDescription" rows="10" /></textarea>
-                </p>
-            </fieldset>
-            <p>
-                <button type="submit">Save Review</button>
-            </p>
-        </form>
-    </body>
-</html>
+<form method="POST" action="/reviews">
+    <fieldset>
+        <legend>New Review</legend>
+        <p>
+            <label for="review-title">Title</label><br>
+            <input id="review-title" type="text" name="reviewTitle" />
+        </p>
+        <p>
+            <label for="movie-title">Movie Title</label><br>
+            <input id="movie-title" type="text" name="movieTitle" />
+        </p>
+        <p>
+            <label for="description-text">Description</label><br>
+            <textarea id="description-text" name="movieDescription" rows="10" /></textarea>
+        </p>
+    </fieldset>
+    <p>
+        <button type="submit">Save Review</button>
+    </p>
+</form>

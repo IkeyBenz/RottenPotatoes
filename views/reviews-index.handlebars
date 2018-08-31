@@ -1,17 +1,7 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Rotten Potatoes</title>
-        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
-    <body>
-        <h1>Reviews</h1>
-        <a href="/reviews/new/">New Review</a>
-        {{#each reviews}}
-            <h2>{{this.reviewTitle}}</h2>
-            <small>{{this.movieTitle}}</small>
-            <p>{{this.movieDescription}}</p>
-        {{/each}}
-    </body>
-</html>
+<h1>Reviews</h1>
+<a href="/reviews/new/">New Review</a>
+{{#each reviews}}
+    <h2><a href="/reviews/{{this._id}}">{{this.reviewTitle}}</a></h2>
+    <small>{{this.movieTitle}}</small>
+    <p>{{this.movieDescription}}</p>
+{{/each}}

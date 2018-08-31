@@ -5,7 +5,7 @@ let bodyParser = require('body-parser');
 let app = express();
 
 app.use(bodyParser.urlencoded({extended: true}));
-app.engine('handlebars', exphbs());
+app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
 
 mongoose.connect('mongodb://localhost/rotten-potatoes', {useNewUrlParser: true});
@@ -33,13 +33,17 @@ app.get('/reviews/new', (req, res) => {
 app.post('/reviews', (req, res) => {
     Review.create(req.body)
     .then(review => {
-        res.redirect('/');
+        res.redirect(`/reviews/${review._id}`);
     }).catch(error => {
         console.log(error.message);
     });
 });
 app.get('/reviews/:id', (req, res) => {
-    // Shows one review
+    Review.findById(req.params.id).then(rvw => {
+        res.render('reviews-show', {review: rvw});
+    }).catch(error => {
+        console.log(error);
+    });
 });
 app.get('/reviews/:id/edit', (req, res) => {
     // Edits a review
