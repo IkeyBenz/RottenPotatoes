@@ -10,7 +10,11 @@ app.set('view engine', 'handlebars');
 
 mongoose.connect('mongodb://localhost/rotten-potatoes', {useNewUrlParser: true});
 
-const Review = mongoose.model('Review', {title: String});
+const Review = mongoose.model('Review', {
+    reviewTitle: String, 
+    movieTitle: String, 
+    movieDescription: String
+});
 
 app.get('/', (req, res) => {
     Review.find()
