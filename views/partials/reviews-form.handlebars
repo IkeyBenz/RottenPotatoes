@@ -1,18 +1,21 @@
 <fieldset>
-  <legend>Edit Review</legend>
-  <p>
-    <label for="review-title">Title</label><br>
-    <input id="review-title" type="text" name="reviewTitle" value="{{review.reviewTitle}}"/>
-  </p>
-  <p>
-    <label for="movie-title">Movie Title</label><br>
-    <input id="movie-title" type="text" name="movieTitle" value="{{review.movieTitle}}" />
-  </p>
-  <p>
-    <label for="review-description">Description</label><br>
-    <textarea id="review-description" name="movieDescription" rows="10" />{{review.movieDescription}}</textarea>
-  </p>
-  <p>
-    <button type="submit">Save Review</button>
-  </p>
+    <legend>{{#if review}}Edit Review{{else}}Create Review{{/if}}</legend>
+    <div class="form-group">
+        <label for="review-title">Title</label><br>
+        <input class="form-control" id="review-title" type="text" name="reviewTitle" value="{{review.reviewTitle}}"/>
+    </div>
+    <div class="form-group">
+        <label for="movie-title">Movie Title</label><br>
+        <input class="form-control" id="movie-title" type="text" name="movieTitle" value="{{review.movieTitle}}" />
+    </div>
+    <div class="form-group">
+        <label for="review-description">Description</label><br>
+        <textarea class="form-control" id="review-description" name="movieDescription" rows="10" />{{review.movieDescription}}</textarea>
+    </div>
+    <div class="form-group">
+        <button class="btn btn-primary" type="submit">Save Review</button>
+    </div>
+    <form class="form-group" method="GET" action="/">
+        <button class="btn btn-danger" type="submit">Cancel</button>
+    </form>
 </fieldset>

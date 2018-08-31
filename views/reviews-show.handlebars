@@ -1,5 +1,12 @@
 <a href="/">&larr; Home</a>
-<h1>{{review.reviewTitle}}</h1>
-<h2>{{review.movieTitle}}</h2>
-<p>{{review.movieDescription}}</p>
-<a href="/reviews/{{review._id}}/edit/">Edit</a>
+<div class="row">
+    <div class="col-sm-6 col-sm-offset-3">
+        <h1>{{review.reviewTitle}}</h1>
+        <h2>{{review.movieTitle}}</h2>
+        <p>{{review.movieDescription}}</p>
+        <p><a href="/reviews/{{review._id}}/edit/">Edit</a></p>
+        <p><form action="POST" action="/reviews/{{review._id}}?_method=DELETE">
+            <button class="btn btn-primary" type="submit">Delete Review</button>
+        </form></p>
+    </div>
+</div>
