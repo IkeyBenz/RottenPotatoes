@@ -4,4 +4,9 @@
     <h2><a href="/reviews/{{this._id}}">{{this.reviewTitle}}</a></h2>
     <small>{{this.movieTitle}}</small>
     <p>{{this.movieDescription}}</p>
+    <p>
+        <form method="POST" action="/reviews/{{this._id}}?_method=DELETE">
+            <button type="submit">Delete</button>
+        </form>
+    </p>
 {{/each}}

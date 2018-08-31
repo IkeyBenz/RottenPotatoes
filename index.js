@@ -63,7 +63,9 @@ app.put('/reviews/:id', (req, res) => {
     });
 });
 app.delete('/reviews/:id', (req, res) => {
-    // Deletes a review
-})
+    Review.findByIdAndRemove(req.params.id).then(() => {
+        res.redirect('/');
+    });
+});
 
 app.listen(5000, console.log("Running Rotten Potatoes on port 5000!"));
