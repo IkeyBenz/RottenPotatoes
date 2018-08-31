@@ -2,9 +2,11 @@ let express = require('express');
 let exphbs = require('express-handlebars');
 let mongoose = require('mongoose');
 let bodyParser = require('body-parser');
+let methodOverride = require('method-override');
 let app = express();
 
 app.use(bodyParser.urlencoded({extended: true}));
+app.use(methodOverride('_method'));
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
 
@@ -46,10 +48,19 @@ app.get('/reviews/:id', (req, res) => {
     });
 });
 app.get('/reviews/:id/edit', (req, res) => {
-    // Edits a review
+    Review.findById(req.params.id).then(rvw => {
+        res.render('reviews-edit', {review: rvw});
+    }).catch(error => {
+        console.log('Error');
+    });
 });
 app.put('/reviews/:id', (req, res) => {
-    // Updates a review
+    Review.findByIdAndUpdate(req.params.id, req.body)
+    .then(review => {
+        res.redirect(`/reviews/${review._id}`);
+    }).catch(error => {
+        console.log(error);
+    });
 });
 app.delete('/reviews/:id', (req, res) => {
     // Deletes a review
