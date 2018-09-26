@@ -19,7 +19,16 @@ module.exports = function (app) {
     });
 
     app.get('/movies/:id', (req, res) => {
-
+        moviedb.movieInfo({ id: req.params.id }).then(movie => {
+            if (movie.video) {
+                moviedb.movieVideo({ id: req.params.id }).then(videos => {
+                    movie.trailer_youtube_id = videos.results[0].key;
+                    res.render('movies-show', { movie: movie });
+                });
+            } else {
+                res.render('movies-show', { movie: movie });
+            }
+        })
     });
 
 }
