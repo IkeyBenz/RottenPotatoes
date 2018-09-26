@@ -1,17 +1,23 @@
 <fieldset>
     <legend>{{#if review}}Edit Review{{else}}Create Review{{/if}}</legend>
     <div class="form-group">
-        <label for="review-title">Title</label><br>
-        <input class="form-control" id="review-title" type="text" name="reviewTitle" value="{{review.reviewTitle}}"/>
+        <label>Title</label><br>
+        <input class="form-control" type="text" name="title" value="{{review.title}}"/>
     </div>
     <div class="form-group">
         <label for="movie-title">Movie Title</label><br>
-        <input class="form-control" id="movie-title" type="text" name="movieTitle" value="{{review.movieTitle}}" />
+        <input class="form-control" type="text" name="movieTitle" value="{{review.movieTitle}}" />
     </div>
     <div class="form-group">
         <label for="review-description">Description</label><br>
-        <textarea class="form-control" id="review-description" name="movieDescription" rows="10" />{{review.movieDescription}}</textarea>
+        <textarea class="form-control" name="description" rows="10" />{{review.description}}</textarea>
     </div>
+    {{#if review}}
+        <input type="hidden" name="movieId" value="{{review.movieId}}">
+    {{else}}
+        <input type="hidden" name="movieId" value="{{movieId}}">
+    {{/if}}
+    
     <div class="form-group">
         <button class="btn btn-primary" type="submit">Save Review</button>
     </div>
