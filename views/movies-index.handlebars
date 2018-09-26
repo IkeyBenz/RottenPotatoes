@@ -1,0 +1,10 @@
+{{#each movies}}
+<div class="card" style="width: 16.5rem; float: left; margin: 5px;">
+    <img class="card-img-top" src="https://image.tmdb.org/t/p/w500/{{this.poster_path}}" alt="Missing Image.">
+    <div class="card-body">
+        <h5 class="card-title">{{this.title}}</h5>
+        <p class="card-text">{{this.overview}}...</p>
+        <a href="/movies/{{this.id}}/" class="btn btn-primary">View More</a>
+    </div>
+</div>
+{{/each}}

@@ -2,14 +2,14 @@ const Review = require('../models/review');
 
 module.exports = function(app) {
 
-    app.get('/', (req, res) => {
-        Review.find()
-        .then(rvws => {
-            res.render('reviews-index', {reviews: rvws});
-        }).catch(error => {
-            console.log(error);
-        });
-    });
+    // app.get('/', (req, res) => {
+    //     Review.find()
+    //     .then(rvws => {
+    //         res.render('reviews-index', {reviews: rvws});
+    //     }).catch(error => {
+    //         console.log(error);
+    //     });
+    // });
 
     app.get('/reviews/new', (req, res) => {
         res.render('reviews-new');
